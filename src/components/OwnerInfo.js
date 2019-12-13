@@ -32,33 +32,20 @@ class OwnerInfo extends Component {
   displayPet() {
     return this.state.pets.map((pet) => {
       return (
-        <div>
-          <table>
-            <tbody>
-              <tr>
-                <td>Name</td>
-                <td>{pet.name} </td>
-              </tr>
-              <tr>
-                <td>Birthdate</td>
-                <td>{pet.birthDate}</td>
-              </tr>
-              <tr>
-                <td>Type</td>
-                <td>{pet.petType}</td>
-              </tr>
-            </tbody>
-          </table>   
-        </div>
+        <tr key={pet.id}>
+          <td>{pet.name}</td>
+          <td>{pet.birthDate.substring(0,10)}</td>
+          <td>{pet.petType}</td>
+        </tr>
       )
     })
   }
   render() {
     return (
       <div>
-        <h1>Owner Information</h1>
-        <div>
-          <table id='ownerInfo'>
+        <div className="container">
+          <h1>Owner Information</h1>
+            <table id='ownerInfo' className="table">
               <tbody>
                 <tr>
                   <td>Name</td>
@@ -79,12 +66,23 @@ class OwnerInfo extends Component {
               </tbody>
           </table>   
         </div>
-        <h3>Pet Information</h3>
-        <div>
-          {this.displayPet()}
+        <div className="container" hidden={this.state.pets.length === 0}>
+          <h3>Pet Information</h3>
+          <table className="table table-striped">
+            <thead className="thead-dark">
+              <tr>
+                <th scope="col">Pet Name</th>
+                <th scope="col">Birth Date</th>
+                <th scope="col">Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.displayPet()}
+            </tbody>
+          </table>
         </div>
-        <div>
-          <Link to={"/owners/" + this.state.owner.id + "/addPet"} className="nav-link">Add Pet</Link>
+        <div className="container">
+          <Link to={"/owners/" + this.state.owner.id + "/addPet"} className="LinkButton">Add Pet</Link>
         </div>
       </div>
     );

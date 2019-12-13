@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../logo.svg';
 import homeImage from './image/pets.png'
 
 function Home(props) {

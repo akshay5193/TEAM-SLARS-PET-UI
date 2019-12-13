@@ -31,7 +31,7 @@ class DisplayOwners extends Component {
   displayOwnerRows() {
     return this.state.owners.map(owner => {
       return (
-        <tr>
+        <tr key={owner.id}>
           <th scope="row">{owner.id}</th>
           <td><Link to={"/owners/" + owner.id} >{owner.name}</Link></td>
           <td>{owner.address}</td>
@@ -45,23 +45,24 @@ class DisplayOwners extends Component {
   render() {
     return (
       <div className="container">
-      <table className="table">
-        <thead className="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">City</th>
-            <th scope="col">Telephone</th>
-            <th scope="col">Pets</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.displayOwnerRows()}
-        </tbody>
-      </table>
+        <br></br>
+        <table className="table table-striped">
+          <thead className="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Address</th>
+              <th scope="col">City</th>
+              <th scope="col">Telephone</th>
+              <th scope="col">Pets</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.displayOwnerRows()}
+          </tbody>
+        </table>
       <div>
-        <Link to="/owners/addOwner" className="nav-link">Add owner</Link>
+        <Link to="/owners/addOwner" className="LinkButton">Add owner</Link>
       </div>
     </div>
     );
