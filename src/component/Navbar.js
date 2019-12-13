@@ -1,11 +1,20 @@
-import React, { Component } from "react";
+import React from 'react';
+import {Link} from 'react-router-dom';
+import logo from '../logo.svg';
 
-class NavBar extends Component {
-  render() {
-    return (
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="#">
+function Navbar(props) {
+  return (
+    <nav className="navbar navbar-expand-sm bg-dark navbar-dark justify-content-between">
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <Link to="/" className="nav-link">Home</Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/owners" className="nav-link">Display Owners</Link>
+        </li>
+      </ul>
+
+      <a className="navbar-brand" href="#">
             Pet Clinic
           </a>
           <button
@@ -34,10 +43,8 @@ class NavBar extends Component {
               </li>
             </ul>
           </div>
-        </nav>
-      </div>
-    );
-  }
+    </nav>
+  );
 }
 
-export default NavBar;
+export default Navbar;
