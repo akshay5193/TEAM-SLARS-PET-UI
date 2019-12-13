@@ -7,6 +7,7 @@ import Home from "./Home";
 import Navbar from "./Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import OwnerInfo from "./OwnerInfo";
+import PersonList from "./PersonList";
 
 function App() {
   return (
@@ -18,7 +19,10 @@ function App() {
             <Home />
           </Route>
           <Route path="/owners">
-            <DisplayOwners />
+            <PersonList />
+          </Route>
+          <Route path="/ownerInfo">
+            <OwnerInfo />
           </Route>
         </Switch>
       </div>
