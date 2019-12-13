@@ -83,7 +83,8 @@ class OwnerInfo extends Component {
         </div>
         <div className="container">
           <Link to={"/owners/" + this.state.owner.id + "/addPet"} className="LinkButton">Add Pet</Link>
-          <Link to={"/owners/" + this.state.owner.id + "/addPet"} className="LinkButton">Update Owner</Link>
+          
+          <Link to={"/owners/" + this.state.owner.id + "/updateOwner"} className="LinkButton">Update Owner</Link>
         </div>
       </div>
     );

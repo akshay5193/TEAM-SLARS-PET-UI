@@ -33,6 +33,9 @@ function App() {
           <Route exact path="/owners/:id/addPet">
             <AddPet />
           </Route>
+          <Route exact path="/owners/:id/updateOwner">
+            <AddOwner />
+          </Route>
         </Switch>
       </div>
     </Router>
