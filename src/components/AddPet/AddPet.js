@@ -1,13 +1,54 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router";
+import axios from "axios";
 
 class AddPet extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      owner: "",
+      petName: "",
+      birthDate: "",
+      type: ""
+    };
+  }
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    console.log(id);
+    axios
+      .get(`https://petclinic-turbulent-fossa.cfapps.io/owner/getById/${id}`)
+      .then(res => {
+        this.setState({ owner: res.data });
+      });
+  }
+
+  handleChange = event => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  };
+  submitForm = event => {
+    event.preventDefault();
+    const form = document.getElementById("addPetForm");
+    console.log(form);
+    this.props.history.push("/owners/" + this.state.owner.id);
+  };
+
   render() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-md-12">
             <div className="well well-sm">
-              <form className="form-horizontal" method="post">
+              <form
+                className="form-horizontal"
+                onSubmit={this.submitForm}
+                id="addPetForm"
+              >
                 <fieldset>
                   <legend className="text-center header">Add Pet</legend>
 
@@ -17,12 +58,14 @@ class AddPet extends Component {
                     </span>
                     <div className="col-md-8">
                       {/* <label>First Name:</label> */}
+                      <label></label>
                       <input
                         id="fname"
-                        name="name"
+                        name="ownerName"
+                        value={this.state.owner.name}
                         type="text"
-                        placeholder="Owner"
                         className="form-control"
+                        readOnly
                       />
                     </div>
                   </div>
@@ -34,11 +77,12 @@ class AddPet extends Component {
                     <div className="col-md-8">
                       {/* <label>First Name:</label> */}
                       <input
-                        id="pname"
-                        name="name"
+                        id="fname"
+                        name="petName"
                         type="text"
                         placeholder="Pet Name"
                         className="form-control"
+                        onChange={this.handleChange}
                       />
                     </div>
                   </div>
@@ -50,11 +94,11 @@ class AddPet extends Component {
                     <div className="col-md-8">
                       {/* <label>First Name:</label> */}
                       <input
-                        id="bdate"
-                        name="name"
+                        name="BirthDate"
                         type="date"
                         placeholder="BirthDate"
                         className="form-control"
+                        onChange={this.handleChange}
                       />
                     </div>
                   </div>
@@ -64,11 +108,13 @@ class AddPet extends Component {
                       <i className="fa fa-user bigicon"></i>
                     </span>
                     <div className="col-md-8">
-                      <select className="form-control" id="pet_type">
-                        <option value="dog">Dog</option>
-                        <option value="cat">Cat</option>
-                        <option value="bird">Bird</option>
-                      </select>
+                      <input
+                        name="type"
+                        type="text"
+                        placeholder="Type"
+                        className="form-control"
+                        onChange={this.handleChange}
+                      />
                     </div>
                   </div>
 
@@ -89,4 +135,4 @@ class AddPet extends Component {
   }
 }
 
-export default AddPet;
+export default withRouter(AddPet);

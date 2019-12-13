@@ -1,40 +1,43 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import axios from "axios";
 
 class DisplayOwners extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      owners: [
-        {
-          id: '1',
-          firstName: 'Lihe',
-          lastName: '2018-12-30',
-          address: 'cat',
-          phoneNumer: '123',
-          pets: []
-        },
-        {
-          id: '2',
-          firstName: 'Simba',
-          lastName: '2018-12-30',
-          address: 'cat',
-          phoneNumer: '12323',
-          pets: []
-        }
-      ]
+      owners: [],
+      pets: []
     }
   }
+
+  componentDidMount() {
+    axios
+      .get(`https://petclinic-turbulent-fossa.cfapps.io/owner/getAllOwners`)
+      .then(res => {
+        const persons = res.data;
+        this.setState({ owners: persons });
+      });
+
+    axios
+      .get(`https://petclinic-turbulent-fossa.cfapps.io/pet/getAllPets`)
+      .then(res => {
+        const pets = res.data;
+
+        this.setState({ pets });
+      });
+  }
+
   displayOwnerRows() {
     return this.state.owners.map(owner => {
       return (
-        <tr>
+        <tr key={owner.id}>
           <th scope="row">{owner.id}</th>
-          <td><Link to={"/owners/" + owner.id} >{owner.firstName}</Link></td>
-          <td>{owner.lastName}</td>
+          <td><Link to={"/owners/" + owner.id} >{owner.name}</Link></td>
           <td>{owner.address}</td>
-          <td>{owner.phoneNumer}</td>
-          <td>{owner.pets.map(pet=>pet.name)}</td>
+          <td>{owner.city}</td>
+          <td>{owner.phoneNumber}</td>
+          <td>{this.state.pets.filter(pet => pet.ownerId == owner.id).map(pet => pet.name + "; ")}</td>
         </tr>
       )
     })
@@ -42,23 +45,24 @@ class DisplayOwners extends Component {
   render() {
     return (
       <div className="container">
-      <table className="table">
-        <thead className="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">City</th>
-            <th scope="col">Telephone</th>
-            <th scope="col">Pets</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.displayOwnerRows()}
-        </tbody>
-      </table>
+        <br></br>
+        <table className="table table-striped">
+          <thead className="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Address</th>
+              <th scope="col">City</th>
+              <th scope="col">Telephone</th>
+              <th scope="col">Pets</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.displayOwnerRows()}
+          </tbody>
+        </table>
       <div>
-        <Link to="/owners/addOwner" className="nav-link">Home</Link>
+        <Link to="/owners/addOwner" className="LinkButton">Add owner</Link>
       </div>
     </div>
     );
