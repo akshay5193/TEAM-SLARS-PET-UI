@@ -29,8 +29,8 @@ class AddOwner extends Component {
 
   submitForm = (event) => {
     event.preventDefault();
-    //const form = document.getElementById('addPetForm');
-    //console.log(form);
+    const form = document.getElementById('AddOwnerForm');
+    console.log(form);
     this.props.history.push("/owners/" + this.state.owner.id);
   }
 
@@ -40,7 +40,7 @@ class AddOwner extends Component {
         <div className="row">
           <div className="col-md-12">
             <div className="well well-sm">
-              <form className="form-horizontal" onSubmit={this.submitForm}>
+              <form className="form-horizontal" onSubmit={this.submitForm} id="AddOwnerForm">
                 <fieldset>
                   <legend className="text-center header">Add Owner</legend>
 
