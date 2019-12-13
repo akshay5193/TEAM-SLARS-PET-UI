@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter} from 'react-router'
 import axios from "axios";
+import {Link} from 'react-router-dom';
 
 class OwnerInfo extends Component {
   constructor(props) {
@@ -81,6 +82,9 @@ class OwnerInfo extends Component {
         <h3>Pet Information</h3>
         <div>
           {this.displayPet()}
+        </div>
+        <div>
+          <Link to="/owners/addOwner" className="nav-link">Add Pet</Link>
         </div>
       </div>
     );

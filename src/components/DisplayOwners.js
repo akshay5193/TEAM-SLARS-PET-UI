@@ -61,7 +61,7 @@ class DisplayOwners extends Component {
         </tbody>
       </table>
       <div>
-        <Link to="/owners/addOwner" className="nav-link">Home</Link>
+        <Link to="/owners/addOwner" className="nav-link">Add owner</Link>
       </div>
     </div>
     );
