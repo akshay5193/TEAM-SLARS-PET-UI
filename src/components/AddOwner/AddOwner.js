@@ -7,6 +7,7 @@ class AddOwner extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      urlId: '',
       owner: {
         id: '154',
         name: '',
@@ -19,12 +20,15 @@ class AddOwner extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.log(id);
-    axios
-      .get(`https://petclinic-turbulent-fossa.cfapps.io/owner/getById/${id}`)
-      .then(res => {
-        this.setState({ owner: res.data });
-      });
+    if(id != '') {
+      this.setState({urlId: id});
+      console.log(id);
+      axios
+        .get(`https://petclinic-turbulent-fossa.cfapps.io/owner/getById/${id}`)
+        .then(res => {
+          this.setState({ owner: res.data });
+        });
+    }
   }
 
   submitForm = (event) => {
