@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class DisplayOwners extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class DisplayOwners extends Component {
       owners: [
         {
           id: '1',
-          firstName: 'Simba',
+          firstName: 'Lihe',
           lastName: '2018-12-30',
           address: 'cat',
           phoneNumer: '123',
@@ -29,7 +30,7 @@ class DisplayOwners extends Component {
       return (
         <tr>
           <th scope="row">{owner.id}</th>
-          <td>{owner.firstName}</td>
+          <td><Link to={"/owners/" + owner.id} >{owner.firstName}</Link></td>
           <td>{owner.lastName}</td>
           <td>{owner.address}</td>
           <td>{owner.phoneNumer}</td>
@@ -56,6 +57,9 @@ class DisplayOwners extends Component {
           {this.displayOwnerRows()}
         </tbody>
       </table>
+      <div>
+        <Link to="/owners/addOwner" className="nav-link">Home</Link>
+      </div>
     </div>
     );
   }
