@@ -7,7 +7,10 @@ import Home from "./Home";
 import Navbar from "./Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import OwnerInfo from "./OwnerInfo";
+
 import AddOwner from "./AddOwner/AddOwner"
+import PersonList from "./PersonList";
+
 
 function App() {
   return (
