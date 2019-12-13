@@ -14,7 +14,6 @@ export default class PersonList extends React.Component {
       .get(`https://petclinic-turbulent-fossa.cfapps.io/owner/getAllOwners`)
       .then(res => {
         const persons = res.data;
-
         this.setState({ persons });
       });
 
@@ -22,7 +21,6 @@ export default class PersonList extends React.Component {
       .get(`https://petclinic-turbulent-fossa.cfapps.io/pet/getAllPets`)
       .then(res => {
         const pets = res.data;
-
         this.setState({ pets });
       });
   }

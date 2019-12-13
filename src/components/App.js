@@ -22,7 +22,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/owners">
-            <PersonList />
+            <DisplayOwners />
           </Route>
           <Route exact path="/owners/addOwner">
             <AddOwner />
