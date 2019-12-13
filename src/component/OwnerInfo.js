@@ -1,29 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class OwnerInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
-      favoriteDevLang: '',
+      firstName: "",
+      lastName: "",
+      favoriteDevLang: "",
       pets: [
         {
-        name: 'Simba',
-        birthdate: '2018-12-30',
-        type: 'cat'
+          name: "Simba",
+          birthdate: "2018-12-30",
+          type: "cat"
         },
         {
-          name: 'Simba2',
-          birthdate: '2018-12-31',
-          type: 'cat'
+          name: "Simba2",
+          birthdate: "2018-12-31",
+          type: "cat"
         }
       ]
-    }
+    };
   }
 
   displayPet() {
-    return this.state.pets.map((pet) => {
+    return this.state.pets.map(pet => {
       return (
         <div>
           <table>
@@ -41,41 +41,39 @@ class OwnerInfo extends Component {
                 <td>{pet.type}</td>
               </tr>
             </tbody>
-          </table>   
+          </table>
         </div>
-      )
-    })
+      );
+    });
   }
   render() {
     return (
       <div>
         <h1>Owner Information</h1>
         <div>
-          <table id='ownerInfo'>
-              <tbody>
-                <tr>
-                  <td>First Name</td>
-                  <td>Lihe </td>
-                </tr>
-                <tr>
-                  <td>Last Name</td>
-                  <td> Wang</td>
-                </tr>
-                <tr>
-                  <td>Address</td>
-                  <td>Lihe Wang</td>
-                </tr>
-                <tr>
-                  <td>Number</td>
-                  <td>1234</td>
-                </tr>
-              </tbody>
-          </table>   
+          <table id="ownerInfo">
+            <tbody>
+              <tr>
+                <td>First Name</td>
+                <td>Lihe </td>
+              </tr>
+              <tr>
+                <td>Last Name</td>
+                <td> Wang</td>
+              </tr>
+              <tr>
+                <td>Address</td>
+                <td>Lihe Wang</td>
+              </tr>
+              <tr>
+                <td>Number</td>
+                <td>1234</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <h3>Pet Information</h3>
-        <div>
-          {this.displayPet()}
-        </div>
+        <div>{this.displayPet()}</div>
       </div>
     );
   }
