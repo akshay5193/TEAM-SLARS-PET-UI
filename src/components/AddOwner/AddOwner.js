@@ -7,7 +7,7 @@ class AddOwner extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      urlId: '',
+      addUpdateOwner: 'Add Owner',
       owner: {
         id: '154',
         name: '',
@@ -21,7 +21,7 @@ class AddOwner extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
     if(id != '') {
-      this.setState({urlId: id});
+      this.setState({addUpdateOwner: 'Update Owner'});
       console.log(id);
       axios
         .get(`https://petclinic-turbulent-fossa.cfapps.io/owner/getById/${id}`)
@@ -46,7 +46,7 @@ class AddOwner extends Component {
             <div className="well well-sm">
               <form className="form-horizontal" onSubmit={this.submitForm} id="AddOwnerForm">
                 <fieldset>
-                  <legend className="text-center header">Add Owner</legend>
+                  <legend className="text-center header">{this.state.addUpdateOwner}</legend>
 
                   <div className="form-group">
                     <span className="col-md-1 col-md-offset-2 text-center">
@@ -122,7 +122,7 @@ class AddOwner extends Component {
                   <div className="form-group">
                     <div className="col-md-12 text-center">
                       <button type="Add" className="btn btn-primary btn-lg">
-                        Add
+                        {this.state.addUpdateOwner}
                       </button>
                     </div>
                   </div>
