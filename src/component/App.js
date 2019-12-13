@@ -14,20 +14,20 @@ import OwnerInfo from './OwnerInfo';
 
 function App() {
   return (
-    // <Router>
-    //   <div>
-        
-    //     <Switch>
-    //       <Route exact path="/">
-    //         <Home />
-    //       </Route>
-    //       <Route path="/owners">
-    //         <OwnerInfo  />
-    //       </Route>
-    //     </Switch>
-    //   </div>
-    // </Router>
-    <div className="App"></div>
+    
+    <Router>
+      <div>
+        <Navbar/> 
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/owners">
+            <DisplayOwners  />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
