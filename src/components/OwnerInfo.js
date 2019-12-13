@@ -84,7 +84,7 @@ class OwnerInfo extends Component {
           {this.displayPet()}
         </div>
         <div>
-          <Link to="/owners/addOwner" className="nav-link">Add Pet</Link>
+          <Link to={"/owners/" + this.state.owner.id + "/addPet"} className="nav-link">Add Pet</Link>
         </div>
       </div>
     );

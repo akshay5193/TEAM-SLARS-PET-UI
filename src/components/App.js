@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import OwnerInfo from "./OwnerInfo";
 
 import AddOwner from "./AddOwner/AddOwner"
-import PersonList from "./PersonList";
+import AddPet from "./AddPet/AddPet";
 
 
 function App() {
@@ -29,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/owners/:id">
             <OwnerInfo />
+          </Route>
+          <Route exact path="/owners/:id/addPet">
+            <AddPet />
           </Route>
         </Switch>
       </div>
