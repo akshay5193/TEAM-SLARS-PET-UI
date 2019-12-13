@@ -90,7 +90,7 @@ class AddOwner extends Component {
                       <i className="fa fa-user bigicon"></i>
                     </span>
                     <div className="col-md-8">
-                      <select class="form-control" id="state_id">
+                      <select className="form-control" id="state_id">
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>

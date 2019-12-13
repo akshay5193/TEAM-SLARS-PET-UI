@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-
+import {useParams} from 'react-router-dom'
+import { withRouter} from 'react-router'
 class OwnerInfo extends Component {
   constructor(props) {
     super(props);
+    const id = this.props.match.params.id;
+    console.log(id);
     this.state = {
       firstName: '',
       lastName: '',
@@ -20,6 +23,10 @@ class OwnerInfo extends Component {
         }
       ]
     }
+  }
+
+  componentWillMount() {
+    
   }
 
   displayPet() {
@@ -81,4 +88,4 @@ class OwnerInfo extends Component {
   }
 }
 
-export default OwnerInfo;
+export default withRouter(OwnerInfo);

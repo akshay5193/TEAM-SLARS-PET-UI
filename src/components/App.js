@@ -7,7 +7,10 @@ import Home from "./Home";
 import Navbar from "./Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import OwnerInfo from "./OwnerInfo";
+
+import AddOwner from "./AddOwner/AddOwner"
 import PersonList from "./PersonList";
+
 
 function App() {
   return (
@@ -18,10 +21,13 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/owners">
+          <Route exact path="/owners">
             <PersonList />
           </Route>
-          <Route path="/ownerInfo">
+          <Route exact path="/owners/addOwner">
+            <AddOwner />
+          </Route>
+          <Route exact path="/owners/:id">
             <OwnerInfo />
           </Route>
         </Switch>
