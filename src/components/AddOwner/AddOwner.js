@@ -20,9 +20,10 @@ class AddOwner extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    if(id != '') {
+    console.log(id);
+    if(typeof(id) != 'undefined') {
       this.setState({addUpdateOwner: 'Update Owner'});
-      console.log(id);
+      
       axios
         .get(`https://petclinic-turbulent-fossa.cfapps.io/owner/getById/${id}`)
         .then(res => {
